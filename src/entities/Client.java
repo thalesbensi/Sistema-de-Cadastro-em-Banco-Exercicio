@@ -13,10 +13,10 @@ public class Client {
 
     }
 
-    public Client(int number, String holder, double balance) {
+    public Client(int number, String holder, double initialDeposit) {
         this.number = number;
         this.holder = holder;
-        this.balance = balance;
+        deposit(initialDeposit);
     }
 
     public Client(int number, String holder) {
@@ -40,17 +40,21 @@ public class Client {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void deposit(double amount){
+        balance += amount;
+    }
+
+    public void withdraw(double amount){
+        balance -= amount + TAX;
     }
 
     public String toString(){
        return  "Account: "
                + number
-               + "Holder: "
+               + " Holder: "
                + holder
-               + "Balance: "
-               + balance;
+               + " Balance: $ "
+               + String.format("%.2f", balance);
     }
 
 
